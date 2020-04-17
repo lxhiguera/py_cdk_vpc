@@ -1,7 +1,75 @@
 {
   "app": "python app.py",
   "context": {
-    "@aws-cdk/core:enableStackNameDuplicates": "true",
-    "aws-cdk:enableDiffNoFail": "true"
+    "customer": "lx",
+    "dev": {
+      "account_id": "XXXXXXXX1515",
+      "name_stage": "dev",
+      "vpc_cidr": "10.201.64.0/19",
+      "vpc_tenacy": "DEFAULT",
+      "subnet_prefix": "24",
+      "max_azs": "2",
+      "layers": {
+        "database": "ISOLATED",
+        "CACHE": "ISOLATED"
+      },
+      "layer_nats": "nat",
+      "active_flowlogs": "false",
+      "layer_endpoints": "CACHE"
+    },
+    "prod": {
+      "account_id": "XXXXXXXX1XXX",
+      "name_stage": "prod",
+      "vpc_cidr": "10.201.0.0/19",
+      "vpc_tenacy": "DEFAULT",
+      "subnet_prefix": "24",
+      "max_azs": "3",
+      "layers": {
+        "nat": "PUBLIC",
+        "front": "PUBLIC",
+        "application": "PRIVATE",
+        "database": "ISOLATED",
+        "CACHE": "ISOLATED",
+        "loquesea": "public"
+      },
+      "layer_nats": "",
+      "layer_endpoints": "CACHE",
+      "active_flowlogs": "false"
+    },
+    "qa": {
+      "account_id": "XXXXXXXX1XXX",
+      "name_stage": "qa",
+      "vpc_cidr": "10.201.32.0/19",
+      "vpc_tenacy": "DEFAULT",
+      "subnet_prefix": "24",
+      "max_azs": "3",
+      "layers": {
+        "nat": "PUBLIC",
+        "front": "PUBLIC",
+        "application": "PRIVATE",
+        "database": "ISOLATED",
+        "CACHE": "ISOLATED",
+        "loquesea": "public"
+      },
+      "layer_nats": "nat",
+      "layer_endpoints": "CACHE",
+      "active_flowlogs": "false"
+    },
+    "shared": {
+      "account_id": "XXXXXXXX1XXX",
+      "name_stage": "shared",
+      "vpc_cidr": "10.201.96.0/19",
+      "vpc_tenacy": "DEFAULT",
+      "subnet_prefix": "24",
+      "max_azs": "3",
+      "layers": {
+        "nat": "PUBLIC",
+        "public": "PUBLIC",
+        "private": "PRIVATE"
+      },
+      "layer_nats": "nat",
+      "layer_endpoints": "CACHE",
+      "active_flowlogs": "false"
+    }
   }
 }

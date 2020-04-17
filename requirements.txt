@@ -1,1 +1,5 @@
+ipaddress
+aws-cdk.core
+aws-cdk.aws_iam
+aws-cdk.aws_ec2
 -e .
